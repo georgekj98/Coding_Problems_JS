@@ -59,5 +59,50 @@ class double_LL{
         node.prev = nodeToInsert;
     }
 
-    
+    insertAfter(node, nodeTi){
+        if(node === this.head && nodeTi === this.tail)
+            return;
+        this.remove(nodeTi);
+        nodeTi.prev = node;
+        nodeTi.next = node.next;
+
+        if( node.next != null)
+            node.next.prev = nodeTi;
+        else
+            this.tail = nodeTi;
+        
+        node.next = nodeTi;
+    }
+
+    setHead(node){
+        if(this.head == null){
+            this.head = node;
+            this.tail = node;
+            return;
+        }
+        this.insertBefore(this.head, node);
+    }
+    setTail(node){
+        if( this.tail == null){
+            this.setHead(node);
+            return;
+        }
+        this.insertAfter(this.tail, node);
+    }
+    insertAtPos( nodeTi, pos){
+        if( pos === 1 ){
+            this.setHead(node);
+            return;
+        }
+        node = self.head;
+        let ctr = 1;
+        while(node != null && ctr !== pos){
+            node = node.next;
+            ctr+=1;
+        }
+        if( node != null )
+            this.insertBefore(node, nodeTi);
+        else
+            this.setTail(nodeTi);
+    }
 }
