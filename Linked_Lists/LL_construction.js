@@ -1,3 +1,11 @@
+class Node{
+    constructor(value, next, prev){
+        this.value = value;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+
 class double_LL{
 
     constructor(){
@@ -91,10 +99,10 @@ class double_LL{
     }
     insertAtPos( nodeTi, pos){
         if( pos === 1 ){
-            this.setHead(node);
+            this.setHead(nodeTi);
             return;
         }
-        node = self.head;
+        let node = this.head;
         let ctr = 1;
         while(node != null && ctr !== pos){
             node = node.next;
@@ -105,4 +113,28 @@ class double_LL{
         else
             this.setTail(nodeTi);
     }
+
+    display(){
+        let node = this.head;
+        while( node.next){
+            console.log(node.value);
+            node = node.next;
+        }
+    }
 }
+
+function main(){
+    let ar = [ 5, 4, 3, 2, 1];
+    let LL = new double_LL();
+    for(let i = 0; i <= ar.length; i++){
+        let node = new Node(ar[i],null);
+        LL.insertAtPos(node, i+1);
+    }
+
+    // console.log(LL);
+    LL.display();
+
+    
+}
+
+main();
