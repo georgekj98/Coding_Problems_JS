@@ -39,9 +39,13 @@ class LinkedList{
         let fast = this.head;
         let slow = this.head;
 
-        while( ctr < n){
+        while( ctr < n && fast != null){
             fast = fast.next;
             ctr+=1;
+        }
+        if(fast == null){
+            this.head = this.head.next;
+            return;
         }
         while( fast.next ){
             fast = fast.next;
@@ -58,7 +62,7 @@ function main(){
         let node = new Node(ar[i],null);
         LL.insert_at_pos(node, i);
     }
-    LL.remove_nth_from_end(3);
+    LL.remove_nth_from_end(10);
     // console.log(LL);
     LL.display();
 
