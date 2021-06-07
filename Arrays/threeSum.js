@@ -14,21 +14,15 @@ let threeSum = function(nums, target) {
         while( left < right){
             let sum = sorted[i] +sorted[left] +sorted[right];
             if( sum === target){
-                let ar = [ sorted[i], sorted[left], sorted[right] ];
-                out.push(ar);
+                out.push([ sorted[i], sorted[left], sorted[right] ]);
                 left++;
                 right--;
             }
-            else if (sum < target){
+            else if (sum < target)
                 left++;
-            }
-            else{
+            else
                 right--;
-            }
-
-        }
-
-    }
+        }}
     return out;
 }
 
